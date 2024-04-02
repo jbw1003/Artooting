@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Party Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="container mt-3">
+<div class="card mb-3">
+    <div class="card-body">
+        <h2 class="card-title" th:text="${party.name}">Party Name</h2>
+        <h5>Comments:</h5>
+        <div th:if="${comments.empty}">No comments yet.</div>
+        <ul class="list-group list-group-flush">
+            <li th:each="comment : ${comments}" class="list-group-item" th:text="${comment.text}">Comment Text</li>
+        </ul>
+    </div>
+</div>
+<div>
+    <h3>Add a Comment</h3>
+    <form th:action="@{/parties/{partyId}/comments(partyId=${party.id})}" th:object="${newComment}" method="post" class="mb-3">
+        <div class="form-group">
+            <label for="commentText">Comment:</label>
+            <input type="text" id="commentText" name="text" class="form-control" th:value="*{text}" required />
+        </div>
+        <button type="submit" class="btn btn-success">Add Comment</button>
+    </form>
+</div>
+<a th:href="@{/parties}" class="btn btn-light">Back to List</a>
+</body>
+</html>

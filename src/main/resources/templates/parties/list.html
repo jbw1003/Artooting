@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Parties</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="container mt-3">
+<h1>Parties</h1>
+<a th:href="@{/parties/create}" class="btn btn-primary mb-3">Create New Party</a>
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th>Name</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="party : ${parties}">
+        <td th:text="${party.name}">Party Name</td>
+        <td>
+            <a th:href="@{/parties/edit/{id}(id=${party.id})}" class="btn btn-secondary btn-sm">Edit</a>
+            <a th:href="@{/parties/delete/{id}(id=${party.id})}" th:onclick="'return confirm(\'Are you sure?\')'" class="btn btn-danger btn-sm">Delete</a>
+            <a th:href="@{/parties/{id}(id=${party.id})}" class="btn btn-info btn-sm">View Details</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
