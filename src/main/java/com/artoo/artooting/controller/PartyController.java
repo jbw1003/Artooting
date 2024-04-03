@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -28,6 +27,11 @@ public class PartyController {
         this.partyService = partyService;
         this.userService = userService;
         this.commentService = commentService;
+    }
+
+    @GetMapping("/index")
+    public String home(){
+        return "index";
     }
 
     @GetMapping

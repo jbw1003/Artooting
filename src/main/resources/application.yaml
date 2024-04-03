@@ -1,0 +1,6 @@
+spring:
+
+  profiles:
+    include: oauth # application-oauth.yaml 파일 포함
+
+  # 기타 설정 Database, Jpa ...
